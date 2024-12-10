@@ -20,7 +20,7 @@ url = "https://www.saucedemo.com/"
 @pytest.fixture
 def browser():
     driver = webdriver.Chrome()
-    url = url
+    url = "https://www.saucedemo.com/"
     driver.get(url)
     driver.maximize_window()
     yield driver
