@@ -15,12 +15,13 @@ forbidden_user = users[wrong_user]
 log_out_user = "locked_user"
 unauthorized_user = users[log_out_user]
 
-url = "https://www.saucedemo.com/"
+test_url = "https://www.saucedemo.com/"
+
 
 @pytest.fixture
 def browser():
     driver = webdriver.Chrome()
-    url = "https://www.saucedemo.com/"
+    url = test_url
     driver.get(url)
     driver.maximize_window()
     yield driver
@@ -29,6 +30,8 @@ def browser():
 
 @pytest.fixture
 def authorize_right_user(browser):
+    url = test_url
+    browser.get(url)
     login = browser.find_element("xpath", '//div[@class="form_group"]//input[@placeholder="Username"]')
     password = browser.find_element("xpath", '//div[@class="form_group"]//input[@placeholder="Password"]')
     enter = browser.find_element("xpath", '//input[@data-test="login-button"]//parent::*')
@@ -40,6 +43,8 @@ def authorize_right_user(browser):
 
 @pytest.fixture
 def authorize_forbidden_user(browser):
+    url = test_url
+    browser.get(url)
     login = browser.find_element("xpath", '//div[@class="form_group"]//input[@placeholder="Username"]')
     password = browser.find_element("xpath", '//div[@class="form_group"]//input[@placeholder="Password"]')
     enter = browser.find_element("xpath", '//input[@data-test="login-button"]//parent::*')
@@ -48,8 +53,11 @@ def authorize_forbidden_user(browser):
     password.send_keys(forbidden_user["password"])
     enter.click()
 
+
 @pytest.fixture
 def authorize_log_out_user(browser):
+    url = test_url
+    browser.get(url)
     login = browser.find_element("xpath", '//div[@class="form_group"]//input[@placeholder="Username"]')
     password = browser.find_element("xpath", '//div[@class="form_group"]//input[@placeholder="Password"]')
     enter = browser.find_element("xpath", '//input[@data-test="login-button"]//parent::*')
