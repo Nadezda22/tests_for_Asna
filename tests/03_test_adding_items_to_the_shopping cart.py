@@ -1,3 +1,7 @@
+
+
+import pytest
+
 def test_delete_delete_one_product(browser, authorize_right_user):
     baby_bodysuit = browser.find_element("xpath", '//div[@class="pricebar"]//button[@name="add-to-cart-sauce-labs-onesie"]')
     baby_bodysuit.click()

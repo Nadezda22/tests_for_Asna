@@ -1,3 +1,6 @@
+import pytest
+
+
 def test_add_one_item_to_shopping_cart(browser, authorize_right_user):
     browser.find_element("xpath", '//button[@data-test="add-to-cart-sauce-labs-backpack"]')
     add_button_for_Sauce_Labs_Backpack = browser.find_element("xpath", '//button[@data-test="add-to-cart-sauce-labs-backpack"]')
