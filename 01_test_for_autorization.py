@@ -1,6 +1,7 @@
 import pytest
 
 
+
 def test_log_right_user(browser, authorize_right_user):
     message = 'user has been successfully logged in'
     print(message)
